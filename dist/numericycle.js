@@ -1,3 +1,6 @@
+import numberUtils from "numberUtils";
+import easing from "easing";
+
 let numericycle = function(element) {
 
 	let currentIteration,
@@ -15,29 +18,52 @@ let numericycle = function(element) {
 	function cycle(options) {
 		settings = Object.assign({}, defaults, options);
 
-		if(isNaN(settings.initialValue)) {
-			settings.initialValue = utils.stringToNumber(element.textContent);
-		}
+		verifyDuration();		
+		verifyInitialValue();
+		verifyFinalValue();		
 
-		if(isNaN(settings.finalValue) || isNaN(settings.initialValue) || settings.finalValue == settings.initialValue) {
+		if(settings.finalValue === settings.initialValue) {
 			return;
 		} 
 
-		if (!window.requestAnimationFrame) {
-			element.textContent = utils.formatNumber(settings.finalValue, settings.format);
+		if (!window.requestAnimationFrame || settings.duration === 0) {
+			updateElementContent(settings.finalValue);			
 		} else {
 			currentIteration = 0;
-			totalIterations = fps*(settings.duration/1000);
+			totalIterations = Math.ceil(fps*(settings.duration/1000));
 			changeInValue = settings.finalValue - settings.initialValue;
-			element.textContent = utils.formatNumber(settings.initialValue, settings.format);
+			element.textContent = numberUtils.formatNumber(settings.initialValue, settings.format);
 
 			window.requestAnimationFrame(onAnimationFrame);
 		}
+	}
 
+	function verifyInitialValue() {
+		if(isNaN(settings.initialValue)) {
+			settings.initialValue = numberUtils.stringToNumber(element.textContent);
+		}
+
+		if(isNaN(settings.initialValue)) {
+			throw new TypeError("initialValue must be a number");
+		}
+	}
+
+	function verifyFinalValue() {
+		if(isNaN(settings.finalValue)) {
+			throw new TypeError("finalValue must be a number");
+		}
+	}
+
+	function verifyDuration() {
+		if(isNaN(settings.duration)) { 
+			throw new TypeError("duration must be a number");
+		} else if(settings.duration < 0) {
+			throw new RangeError("duration cannot be a negative number")
+		}
 	}
 
 	function getCurrentValue() {
-		var easingFunction = getEasingFunction();
+		var easingFunction = getEasingFunction();		
 		return Math.round(easingFunction(currentIteration, settings.initialValue, changeInValue, totalIterations));
 	}
 
@@ -57,59 +83,18 @@ let numericycle = function(element) {
 	function onAnimationFrame() {
 		if(currentIteration < totalIterations) {
 			currentIteration++;
-			element.textContent = utils.formatNumber(getCurrentValue(), settings.format);
+			updateElementContent(getCurrentValue());
 			window.requestAnimationFrame(onAnimationFrame);
 		}
+	}
+
+	function updateElementContent(value) {
+		element.textContent = numberUtils.formatNumber(value, settings.format);
 	}
 
 	return {
 		cycle: cycle
 	};
-}
-
-let utils = {
-	stringToNumber: function(str) {
-		return parseFloat(str.replace(/\D/g,''));
-	},
-	formatNumber: function(number, format) {
-		switch(format) {
-			case "0,0":
-				return this.formatNumberStandard(number);
-			case "0":
-				return number.toString();
-
-		}	
-	},
-	formatNumberStandard: function(number) {
-		var nStr = number.toString();
-		nStr += '';
-		var x = nStr.split('.');
-		var x1 = x[0];
-		var x2 = x.length > 1 ? '.' + x[1] : '';
-		var rgx = /(\d+)(\d{3})/;
-		while (rgx.test(x1)) {
-		x1 = x1.replace(rgx, '$1' + ',' + '$2');
-		}
-		return x1 + x2;
-	}
-}
-
-let easing = {
-	linearEase: function(currentIteration, startValue, changeInValue, totalIterations) {
-		return changeInValue * currentIteration / totalIterations + startValue;
-	},
-	easeInOutCubic: function(currentIteration, startValue, changeInValue, totalIterations) {
-		if ((currentIteration /= totalIterations / 2) < 1) {
-			return changeInValue / 2 * Math.pow(currentIteration, 3) + startValue;
-		}
-		return changeInValue / 2 * (Math.pow(currentIteration - 2, 3) + 2) + startValue;
-	},
-	easeOutCubic: function(currentIteration, startValue, changeInValue, totalIterations) {
-		return changeInValue * (Math.pow(currentIteration / totalIterations - 1, 3) + 1) + startValue;
-	},
-	easeInCubic: function (currentIteration, startValue, changeInValue, totalIterations) {
-		return changeInValue * Math.pow(currentIteration / totalIterations, 3) + startValue;
-	}
 }
 
 export default numericycle;

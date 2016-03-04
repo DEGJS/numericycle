@@ -1,0 +1,9 @@
+.site-header {
+	padding: 1em 0;
+	background-color: #1782c5;
+	color: #fff;
+}
+
+@media (min-width: 66em) {
+	padding: 1em;
+}

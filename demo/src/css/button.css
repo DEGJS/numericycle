@@ -1,0 +1,22 @@
+.button {
+    border: 3px solid #1782c5;
+    color: #1782c5;
+    background-color: #1782c5;
+    color: #fff;
+    padding: 1em 2em;
+    font-size: .875em;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color .25s ease-out;
+
+    &:hover {
+        text-decoration: none;
+        background-color: #249be5;
+    }
+
+    &:active {
+        background-color: #5bb4ec;
+    }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "numericycle-demo",
+  "version": "1.0.0",
+  "description": "Demo of Numericycle",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-jspm": "^0.1.1",
+    "grunt-postcss": "^0.8.0",
+    "jspm": "^0.16.30",
+    "postcss-custom-properties": "^5.0.0",
+    "postcss-import": "^7.0.0",
+    "postcss-nested": "^1.0.0np",
+    "autoprefixer": "^6.0.0",
+    "csswring": "^4.0.0"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "src/js"
+    },
+    "dependencies": {
+      "DEGJS/numericycle": "github:DEGJS/numericycle@1.0.0",
+      "prism": "github:PrismJS/prism@^1.4.1"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}

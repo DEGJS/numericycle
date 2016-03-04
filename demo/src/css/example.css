@@ -1,0 +1,47 @@
+.example {
+	padding-bottom: 3em;
+	margin-bottom: 3em;
+	border-bottom: 1px solid #ccc;
+}
+
+.example__heading {
+	margin-bottom: .5em;
+}
+
+.example__number {
+	font-size: 6em;
+	color: #8dc63f;
+	margin-bottom: .5em;
+	text-shadow: 0 0 .125rem rgba(0,0,0,.75);
+}
+
+.example__interface {
+	text-align: center;
+}
+
+
+@media (min-width: 48em) {
+	.example {
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.example__heading {
+		width: 100%;
+	}
+
+	.example__code-wrap, .example__interface {
+		width: 50%;
+	}
+
+	.example__interface {
+		width: 40%;
+	}
+
+	.example__number {
+		font-size: 8em;
+		margin-bottom: .25em;
+	}
+}
