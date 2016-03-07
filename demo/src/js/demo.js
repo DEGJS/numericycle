@@ -62,10 +62,8 @@ let demo = function() {
 
 		if(example.hasOwnProperty('instance') == false) {
 			var numberEl = containerEl.querySelector('.example__number');
-
 			example.instance = numericycle(numberEl);
 		}
-		console.log(examples);
 
 		return example;
 	}

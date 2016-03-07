@@ -1,4 +1,3 @@
-/* */ 
 import numberUtils from "./numberUtils";
 import easing from "./easing";
 
@@ -7,6 +6,7 @@ let numericycle = function(element) {
 	let currentIteration,
 		totalIterations,
 		changeInValue,
+		animationRequestId,
 		settings,
 		defaults = {
 			duration: 2000,
@@ -30,12 +30,16 @@ let numericycle = function(element) {
 		if (!window.requestAnimationFrame || settings.duration === 0) {
 			updateElementContent(settings.finalValue);			
 		} else {
+			if(animationRequestId != null) {
+				window.cancelAnimationFrame(animationRequestId);
+			}
+
 			currentIteration = 0;
 			totalIterations = Math.ceil(fps*(settings.duration/1000));
 			changeInValue = settings.finalValue - settings.initialValue;
 			element.textContent = numberUtils.formatNumber(settings.initialValue, settings.format);
 
-			window.requestAnimationFrame(onAnimationFrame);
+			animationRequestId = window.requestAnimationFrame(onAnimationFrame);
 		}
 	}
 
@@ -85,8 +89,8 @@ let numericycle = function(element) {
 		if(currentIteration < totalIterations) {
 			currentIteration++;
 			updateElementContent(getCurrentValue());
-			window.requestAnimationFrame(onAnimationFrame);
-		}
+			animationRequestId = window.requestAnimationFrame(onAnimationFrame);
+		} 
 	}
 
 	function updateElementContent(value) {
