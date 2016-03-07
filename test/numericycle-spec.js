@@ -340,7 +340,7 @@ describe('Numericycle', () => {
       expect(window.requestAnimationFrame).not.toHaveBeenCalled();
     });
 
-    fit('stops current animation and begins new one when specified', function() {
+    it('stops current animation and begins new one when specified', function() {
 
       let numericycleInst = numericycle(element);
       numericycleInst.cycle({

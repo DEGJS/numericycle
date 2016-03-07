@@ -1,5 +1,5 @@
-import numberUtils from "numberUtils";
-import easing from "easing";
+import numberUtils from "./numberUtils";
+import easing from "./easing";
 
 let numericycle = function(element) {
 
