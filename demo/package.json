@@ -20,7 +20,7 @@
       "baseURL": "src/js"
     },
     "dependencies": {
-      "DEGJS/numericycle": "github:DEGJS/numericycle@1.0.0",
+      "DEGJS/numericycle": "github:DEGJS/numericycle@1.0.1",
       "prism": "github:PrismJS/prism@^1.4.1"
     },
     "devDependencies": {

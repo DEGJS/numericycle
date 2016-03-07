@@ -14,7 +14,7 @@ System.config({
   },
 
   map: {
-    "DEGJS/numericycle": "github:DEGJS/numericycle@1.0.0",
+    "DEGJS/numericycle": "github:DEGJS/numericycle@1.0.1",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "core-js": "npm:core-js@1.2.6",

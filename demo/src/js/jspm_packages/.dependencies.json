@@ -39,6 +39,6 @@
   "github:jspm/nodelibs-util@0.1.0": {
     "util": "npm:util@^0.10.3"
   },
-  "github:DEGJS/numericycle@1.0.0": {},
-  "github:PrismJS/prism@1.4.1": {}
+  "github:PrismJS/prism@1.4.1": {},
+  "github:DEGJS/numericycle@1.0.1": {}
 }
