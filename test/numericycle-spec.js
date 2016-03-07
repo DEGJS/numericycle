@@ -14,6 +14,12 @@ describe('Numericycle', () => {
       setTimeout(function() {
         callback();
       }, millisecondsPerFrame);
+
+      return Math.random();
+    });
+
+    spyOn(window, 'cancelAnimationFrame').and.callFake(function(requestId) {
+      
     });
   });
 
@@ -334,26 +340,36 @@ describe('Numericycle', () => {
       expect(window.requestAnimationFrame).not.toHaveBeenCalled();
     });
 
-    it('stops current animation and begins new one when specified', function() {
+    fit('stops current animation and begins new one when specified', function() {
 
       let numericycleInst = numericycle(element);
       numericycleInst.cycle({
         initialValue: 1,
-        finalValue: 10
+        finalValue: 10,
+        duration: 2000,
+        easing: 'linear'
       });
 
-      jasmine.clock().tick(defaultDuration/2);
+      jasmine.clock().tick(1000);
+
+      var requestId = window.requestAnimationFrame.calls.mostRecent().returnValue;
 
       numericycleInst.cycle({
         initialValue: 30,
-        finalValue: 40
+        finalValue: 40,
+        duration: 2000,
+        easing: 'linear'
       });
+      
+      expect(window.cancelAnimationFrame).toHaveBeenCalledWith(requestId);
 
       expect(element.textContent).toBe('30');
 
-      jasmine.clock().tick(defaultDuration);
+      jasmine.clock().tick(2000);
 
       expect(element.textContent).toBe('40');
+
+      expect(window.requestAnimationFrame).toHaveBeenCalledTimes(182);
 
     });
 
