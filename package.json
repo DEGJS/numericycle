@@ -1,6 +1,6 @@
 {
     "name": "numericycle",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "ES6 module for animating between two numbers",
     "keywords": [
         "number cycle",
