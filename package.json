@@ -37,6 +37,9 @@
         "test-single-run": "karma start --single-run"
     },
     "jspm": {
+        "dependencies": {           
+            "DEGJS/easing": "github:DEGJS/easing@^1.0.1"
+        },
         "registry": "jspm",
         "format": "es6",
         "main": "numericycle.js",

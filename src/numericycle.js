@@ -1,5 +1,5 @@
 import numberUtils from "./numberUtils";
-import easing from "./easing";
+import * as easing from "DEGJS/easing";
 
 let numericycle = function(element) {
 
@@ -81,7 +81,7 @@ let numericycle = function(element) {
 			case "easeIn":
 				return easing.easeInCubic;
 			default:
-				return easing.linearEase;
+				return easing.linear;
 		}
 	}
 
