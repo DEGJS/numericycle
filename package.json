@@ -1,6 +1,6 @@
 {
-    "name": "numericycle",
-    "version": "1.0.3",
+    "name": "degjs-numericycle",
+    "version": "1.0.4",
     "description": "ES6 module for animating between two numbers",
     "keywords": [
         "number cycle",
@@ -11,12 +11,16 @@
         "name": "Ryan Heap",
         "email": "rheap@degdigital.com"
     },
+    "main": "dist/numericycle.js",
     "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/DEGJS/numericycle.git"
     },
     "bugs": "https://github.com/DEGJS/numericycle/issues",
+    "dependencies": {
+        "degjs-easing": "^1.0.2"
+    },
     "devDependencies": {
         "babel-core": "^5.0.0",
         "es6-module-loader": "^0.17.11",
@@ -38,7 +42,7 @@
     },
     "jspm": {
         "dependencies": {           
-            "DEGJS/easing": "github:DEGJS/easing@^1.0.1"
+            "DEGJS/easing": "github:DEGJS/easing@^1.0.2"
         },
         "registry": "jspm",
         "format": "es6",
