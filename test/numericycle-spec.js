@@ -1,5 +1,5 @@
-import numericycle from 'numericycle';
-import easing from "easing";
+import numericycle from 'src/numericycle';
+import * as easing from "DEGJS/easing";
 
 //This is a test suite for the numericycle plugin
 describe('Numericycle', () => {
@@ -175,11 +175,11 @@ describe('Numericycle', () => {
         easing: 'linear'
       });
 
-      expect(parseFloat(element.textContent)).toBe(Math.round(easing.linearEase(0, 1, 9, 60)));
+      expect(parseFloat(element.textContent)).toBe(Math.round(easing.linear(0, 1, 9, 60)));
       jasmine.clock().tick(midpointTime);
-      expect(parseFloat(element.textContent)).toBe(Math.round(easing.linearEase(30, 1, 9, 60)));
+      expect(parseFloat(element.textContent)).toBe(Math.round(easing.linear(30, 1, 9, 60)));
       jasmine.clock().tick(midpointTime);
-      expect(parseFloat(element.textContent)).toBe(Math.round(easing.linearEase(60, 1, 9, 60)));
+      expect(parseFloat(element.textContent)).toBe(Math.round(easing.linear(60, 1, 9, 60)));
     });
 
     it('changes the number with an ease-in animation', function() {
