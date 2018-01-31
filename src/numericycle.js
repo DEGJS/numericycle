@@ -2,19 +2,19 @@ import numberUtils from "./numberUtils";
 import * as easing from "DEGJS/easing";
 
 
-let currentIteration;
-let totalIterations;
-let changeInValue;
-let element;
-let animationRequestId;
-let settings;
-let defaults = {
+const defaults = {
 	duration: 2000,
 	easing: 'easeOut',
 	format: '0,0'
 };
-
 const fps = 60;
+
+let animationRequestId;
+let changeInValue;
+let currentIteration;
+let element;
+let settings;
+let totalIterations;
 
 function cycle(options) {
 	settings = Object.assign({}, defaults, options);
