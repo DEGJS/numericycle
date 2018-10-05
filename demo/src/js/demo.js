@@ -1,8 +1,8 @@
-import numericycle from "DEGJS/numericycle";
-import { findAncestor } from "domUtils";
-import prism from "prism";
+import numericycle from "../../../src/numericycle.js";
+import { findAncestor } from "./domUtils.js";
+import Prism from 'prismjs';
 
-let demo = function() {
+const demo = function() {
 
 	let examples = {};
 
@@ -40,6 +40,8 @@ let demo = function() {
 		}
 
 		document.addEventListener('click', onDocumentClick);
+
+		Prism.highlightAll();
 	}
 
 	function onDocumentClick(e) {
@@ -67,9 +69,6 @@ let demo = function() {
 
 		return example;
 	}
-
-
-	
 
 	init();
 };

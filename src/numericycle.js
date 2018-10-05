@@ -1,14 +1,15 @@
-import numberUtils from "./numberUtils";
-import * as easing from "DEGJS/easing";
+import { formatNumber, stringToNumber } from "./numberUtils.js";
+import * as easing from "@degjs/easing";
 
-let numericycle = function(element) {
+function numericycle(element) {
 
-	let currentIteration,
-		totalIterations,
-		changeInValue,
-		animationRequestId,
-		settings,
-		defaults = {
+	let currentIteration;
+	let totalIterations;
+	let changeInValue;
+	let animationRequestId;
+	let settings;
+
+	const defaults = {
 			duration: 2000,
 			easing: 'easeOut',
 			format: '0,0'
@@ -22,12 +23,10 @@ let numericycle = function(element) {
 		verifyDuration();		
 		verifyInitialValue();
 		verifyFinalValue();		
-
-		if(settings.finalValue === settings.initialValue) {
-			return;
-		} 
-
-		if (!window.requestAnimationFrame || settings.duration === 0) {
+		
+		if (!window.requestAnimationFrame || 
+			settings.duration === 0 || 
+			settings.finalValue === settings.initialValue) {
 			updateElementContent(settings.finalValue);			
 		} else {
 			if(animationRequestId != null) {
@@ -37,7 +36,7 @@ let numericycle = function(element) {
 			currentIteration = 0;
 			totalIterations = Math.ceil(fps*(settings.duration/1000));
 			changeInValue = settings.finalValue - settings.initialValue;
-			element.textContent = numberUtils.formatNumber(settings.initialValue, settings.format);
+			updateElementContent(settings.initialValue);
 
 			animationRequestId = window.requestAnimationFrame(onAnimationFrame);
 		}
@@ -45,7 +44,7 @@ let numericycle = function(element) {
 
 	function verifyInitialValue() {
 		if(isNaN(settings.initialValue)) {
-			settings.initialValue = numberUtils.stringToNumber(element.textContent);
+			settings.initialValue = stringToNumber(element.textContent);
 		}
 
 		if(isNaN(settings.initialValue)) {
@@ -68,7 +67,7 @@ let numericycle = function(element) {
 	}
 
 	function getCurrentValue() {
-		var easingFunction = getEasingFunction();		
+		const easingFunction = getEasingFunction();		
 		return Math.round(easingFunction(currentIteration, settings.initialValue, changeInValue, totalIterations));
 	}
 
@@ -85,7 +84,7 @@ let numericycle = function(element) {
 		}
 	}
 
-	function onAnimationFrame() {
+	function onAnimationFrame() {		
 		if(currentIteration < totalIterations) {
 			currentIteration++;
 			updateElementContent(getCurrentValue());
@@ -94,11 +93,11 @@ let numericycle = function(element) {
 	}
 
 	function updateElementContent(value) {
-		element.textContent = numberUtils.formatNumber(value, settings.format);
+		element.textContent = formatNumber(value, settings.format);
 	}
 
 	return {
-		cycle: cycle
+		cycle
 	};
 }
 
