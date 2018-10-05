@@ -1,57 +1,53 @@
 {
-  "name": "degjs-numericycle",
-  "version": "1.0.5",
-  "description": "ES6 module for animating between two numbers",
-  "keywords": [
-    "number cycle",
-    "number animation",
-    "digitBlaster"
-  ],
-  "author": {
-    "name": "Ryan Heap",
-    "email": "rheap@degdigital.com"
-  },
-  "main": "dist/numericycle.js",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/DEGJS/numericycle.git"
-  },
-  "bugs": "https://github.com/DEGJS/numericycle/issues",
-  "dependencies": {
-    "degjs-easing": "^1.0.2"
-  },
-  "devDependencies": {
-    "babel-core": "^5.8.38",
-    "grunt": "^0.4.5",
-    "grunt-contrib-copy": "~0.5.0",
-    "jasmine-core": "^2.9.1",
-    "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.3",
-    "karma-jasmine": "^0.3.8",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-systemjs": "^0.11.0",
-    "phantomjs-prebuilt": "^2.1.4",
-    "systemjs": "^0.19.47"
-  },
-  "scripts": {
-    "test": "karma start",
-    "test-single-run": "karma start --single-run"
-  },
-  "jspm": {
-    "registry": "jspm",
-    "main": "numericycle.js",
-    "format": "es6",
-    "directories": {
-      "lib": "src"
+    "name": "@degjs/numericycle",
+    "version": "2.0.0",
+    "description": "Animate between two numbers",
+    "keywords": [
+        "number cycle",
+        "number animation",
+        "digitBlaster"
+    ],
+    "author": {
+        "name": "Ryan Heap",
+        "email": "rheap@degdigital.com"
     },
+    "files": [
+        "src"
+    ],
+    "main": "src/numericycle.js",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DEGJS/numericycle.git"
+    },
+    "bugs": "https://github.com/DEGJS/numericycle/issues",
     "dependencies": {
-      "DEGJS/easing": "github:DEGJS/easing@^1.0.2"
+        "@degjs/easing": "^2.0.0"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.1.13",
-      "babel-runtime": "npm:babel-runtime@^5.1.13",
-      "core-js": "npm:core-js@^0.9.4"
+        "@babel/core": "^7.1.2",
+        "@babel/preset-env": "^7.1.0",
+        "@babel/register": "^7.0.0",
+        "babel-core": "^7.0.0-bridge.0",
+        "babel-jest": "^23.6.0",
+        "babel-plugin-prismjs": "^1.0.2",
+        "cssnano": "^4.1.4",
+        "fs-extra": "^7.0.0",
+        "jest": "^23.6.0",
+        "postcss": "^7.0.5",
+        "postcss-easy-import": "^3.0.0",
+        "postcss-nested": "^4.1.0",
+        "prismjs": "^1.15.0",
+        "rollup": "^0.66.4",
+        "rollup-plugin-babel": "^4.0.3",
+        "rollup-plugin-commonjs": "^9.1.8",
+        "rollup-plugin-node-resolve": "^3.4.0"
+    },
+    "scripts": {
+        "test": "jest",
+        "build-demo": "node demo/build.js"
+    },
+    "publishConfig": {
+        "access": "public"
     }
-  }
 }

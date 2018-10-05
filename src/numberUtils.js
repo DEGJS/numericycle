@@ -1,29 +1,30 @@
-let numberUtils = {
-	stringToNumber: function(str) {
-		return parseFloat(str.replace(/\D/g,''));
-	},
-	formatNumber: function(number, format) {
-		switch(format) {			
-			case "0":
-				return number.toString();
-			case "0,0":
-			default:
-				return this.formatNumberStandard(number);
-
-		}	
-	},
-	formatNumberStandard: function(number) {
-		var nStr = number.toString();
-		nStr += '';
-		var x = nStr.split('.');
-		var x1 = x[0];
-		var x2 = x.length > 1 ? '.' + x[1] : '';
-		var rgx = /(\d+)(\d{3})/;
-		while (rgx.test(x1)) {
-		x1 = x1.replace(rgx, '$1' + ',' + '$2');
-		}
-		return x1 + x2;
+export function stringToNumber(str) {
+	if(typeof str === 'undefined' || str === null) {
+		return NaN;
 	}
+
+	return parseFloat(str.replace(/[^0-9.-]/g,''));
 }
 
-export default numberUtils;
+export function formatNumber(number, format) {
+	switch(format) {			
+		case "0":
+			return number.toString();
+		case "0,0":
+		default:
+			return formatNumberStandard(number);
+	}	
+}
+	
+export function formatNumberStandard(number) {
+	let nStr = number.toString();
+	nStr += '';
+	const x = nStr.split('.');
+	let x1 = x[0];
+	const x2 = x.length > 1 ? '.' + x[1] : '';
+	const rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	}
+	return x1 + x2;
+}
