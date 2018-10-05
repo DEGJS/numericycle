@@ -17,7 +17,6 @@ deploy:
     keep-history: true
     local-dir: demo/dist
     on:
-      tags: true
       branch: master
       repo: DEGJS/numericycle
   - provider: npm
