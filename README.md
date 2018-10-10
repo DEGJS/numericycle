@@ -1,6 +1,6 @@
+# numericycle
 [![Build Status](https://travis-ci.com/DEGJS/numericycle.svg?branch=master)](https://travis-ci.com/DEGJS/numericycle)
 
-# numericycle
 Numericycle is a Javascript module that animates a number from one value to another. It takes advantage of [Window.requestAnimationFrame](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) to produce smooth animations. Numericycle can be easily configured for animation duration, easing, and number display format.
 
 ## Install
