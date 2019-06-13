@@ -1,6 +1,6 @@
 {
     "name": "@degjs/numericycle",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Animate between two numbers",
     "keywords": [
         "number cycle",
@@ -29,11 +29,11 @@
         "@babel/preset-env": "^7.1.0",
         "@babel/register": "^7.0.0",
         "babel-core": "^7.0.0-bridge.0",
-        "babel-jest": "^23.6.0",
+        "babel-jest": "^24.8.0",
         "babel-plugin-prismjs": "^1.0.2",
-        "cssnano": "^4.1.4",
+        "cssnano": "^4.1.10",
         "fs-extra": "^7.0.0",
-        "jest": "^23.6.0",
+        "jest": "^24.8.0",
         "postcss": "^7.0.5",
         "postcss-easy-import": "^3.0.0",
         "postcss-nested": "^4.1.0",
