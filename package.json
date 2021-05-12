@@ -34,7 +34,7 @@
         "cssnano": "^4.1.10",
         "fs-extra": "^7.0.0",
         "jest": "^26.6.3",
-        "postcss": "^7.0.5",
+        "postcss": "^8.2.10",
         "postcss-easy-import": "^3.0.0",
         "postcss-nested": "^4.1.0",
         "prismjs": "^1.15.0",
